@@ -21,7 +21,7 @@ const Navbar = () => {
                         {}
                     </ul>
                 </div>
-                <Link data-aos="fade-right" data-aos-duration="500" className="btn btn-ghost text-xl" to="/">IndusHub</Link>
+                <Link data-aos="fade-right" data-aos-duration="500" className="btn btn-ghost text-xl" to="/">PaperGlass Hub</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
