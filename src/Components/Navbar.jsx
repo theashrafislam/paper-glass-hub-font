@@ -1,14 +1,30 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
+
+    const {user, logOut} = useContext(AuthContext);
 
     const navLinks = <>
             <li className="font-semibold" data-aos="fade-down" data-aos-duration="500"><NavLink to="/">Home</NavLink></li>
             <li className="font-semibold" data-aos="fade-down" data-aos-duration="500"><NavLink to="/allArtAndCreftItems">All Art & craft Items</NavLink></li>
             <li className="font-semibold" data-aos="fade-up" data-aos-duration="500"><NavLink to="/myArtAndCraftList">My Art&Craft List</NavLink></li>
-            <li className="font-semibold" data-aos="fade-up" data-aos-duration="500"><NavLink to="/login">Login</NavLink></li>
+            {/* <li className="font-semibold" data-aos="fade-up" data-aos-duration="500"><NavLink to="/login">Login</NavLink></li> */}
             <li className="font-semibold" data-aos="fade-down" data-aos-duration="500"><NavLink to="/register">Register</NavLink></li>
         </>
+    
+    const handleLogOut = () => {
+        logOut()
+            .then(result => {
+                // if(result){
+                //     toast.success('Log Out successful!');
+                // }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 
     return (
         <div className="navbar border-2 rounded-xl bg-gray-100">
@@ -30,7 +46,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
 
-                {/* {
+                {
                     user ?
                         <div data-aos="fade-left" data-aos-duration="500" className="flex items-center justify-center">
                             <Link to="/userProfile" tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mr-3">
@@ -38,12 +54,13 @@ const Navbar = () => {
                                     <img alt="User Images" src={user?.photoURL && user.photoURL} />
                                 </div>
                             </Link>
-                            <button onClick={handleSignOut} className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">Log out</button>
+                            <button onClick={handleLogOut} className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">Log out</button>
                         </div>
                         :
                         <Link data-aos="fade-left" data-aos-duration="500" to="/login" className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">Log In</Link>
-                } */}
+                }
             </div>
+            {/* <Toaster /> */}
         </div>
     );
 };
