@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { IoEye, IoEyeOff } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
+    const {loginWithGoogle, loginWithGihub} = useContext(AuthContext)
+    const navigate = useNavigate()
     const [showPass, setShowPass] = useState(false);
     const { loginWithEmailPasswrod } = useContext(AuthContext);
     const handleLogin = (e) => {
@@ -17,13 +19,46 @@ const Login = () => {
             .then(result => {
                 console.log(result);
                 if (result) {
-                    toast.success('Log in Success! Welcome Back!');
+                    toast.success('Log in Success! Welcome Back!', {duration: 3000});
+                    setTimeout(() => {
+                        navigate('/')
+                    }, 3000);
                 }
             })
             .catch(error => {
                 console.log(error);
                 toast.error("Oops! Looks like something went wrong. Let's try again.");
             })
+    }
+    const handleGoogle = () => {
+        loginWithGoogle()
+            .then(result => {
+                if (result) {
+                    toast.success('Log in Success! Welcome Back!', {duration: 3000});
+                    setTimeout(() => {
+                        navigate('/')
+                    }, 3000);
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                toast.error("Oops! Looks like something went wrong. Let's try again.");
+            })
+    }
+    const handleGithub = () => {
+        loginWithGihub()
+        .then(result => {
+            if (result) {
+                toast.success('Log in Success! Welcome Back!', {duration: 3000});
+                setTimeout(() => {
+                    navigate('/')
+                }, 3000);
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            toast.error("Oops! Looks like something went wrong. Let's try again.");
+        })
     }
     return (
         <div className="mt-4">
@@ -58,10 +93,10 @@ const Login = () => {
                 </div>
                 <div className="flex justify-between items-center gap-5 mt-5">
                     <div className="w-full">
-                        <button className="btn w-full text-lg md:text-xl bg-violet-600 text-gray-50 hover:text-black"> <FaGoogle /> Google</button>
+                        <button onClick={handleGoogle} className="btn w-full text-lg md:text-xl bg-violet-600 text-gray-50 hover:text-black"> <FaGoogle /> Google</button>
                     </div>
                     <div className="w-full">
-                        <button className="btn w-full text-lg md:text-xl bg-violet-600 text-gray-50 hover:text-black"><FaGithub /> GitHub</button>
+                        <button onClick={handleGithub} className="btn w-full text-lg md:text-xl bg-violet-600 text-gray-50 hover:text-black"><FaGithub /> GitHub</button>
                     </div>
                 </div>
             </div>

@@ -57,7 +57,7 @@ const Navbar = () => {
                             <button onClick={handleLogOut} className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">Log out</button>
                         </div>
                         :
-                        <Link data-aos="fade-left" data-aos-duration="500" to="/login" className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">Log In</Link>
+                        <NavLink data-aos="fade-left" data-aos-duration="500" to="/login" className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">Log In</NavLink>
                 }
             </div>
             {/* <Toaster /> */}

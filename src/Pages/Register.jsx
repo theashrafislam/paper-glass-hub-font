@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
 import { useContext, useState } from "react";
@@ -6,6 +6,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
+    const navigate = useNavigate()
     const [showPass, setShowPass] = useState(false);
     const { createUserEmailPassword, updateUserProfile, logOut } = useContext(AuthContext)
 
@@ -33,6 +34,20 @@ const Register = () => {
         createUserEmailPassword(email, password)
             .then(result => {
                 console.log(result);
+                if (result) {
+                    logOut()
+                        .then(result => {
+                            console.log(result);
+                            toast.success('Registration successful!', { duration: 3000 });
+                            setTimeout(() => {
+                                navigate('/login')
+                            }, 3000);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+
+                }
                 updateUserProfile(name, photoURL)
                     .then(() => {
 
@@ -40,16 +55,6 @@ const Register = () => {
                     .catch((error) => {
                         console.log(error);
                     });
-                if (result) {
-                    toast.success('Registration successful!');
-                    logOut()
-                        .then(result => {
-                            console.log(result);
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        })
-                }
             })
             .catch(error => {
                 console.log(error);
