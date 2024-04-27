@@ -4,7 +4,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
 
-    const {user, logOut} = useContext(AuthContext);
+    const {user, logOut, loading} = useContext(AuthContext);
 
     const navLinks = <>
             <li className="font-semibold" data-aos="fade-down" data-aos-duration="500"><NavLink to="/">Home</NavLink></li>

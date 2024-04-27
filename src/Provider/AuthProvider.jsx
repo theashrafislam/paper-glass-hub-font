@@ -25,8 +25,8 @@ const AuthProvider = ({children}) => {
 
     //update profile
     const updateUserProfile = (displayName, photoURL) => {
-        updateProfile(auth.currentUser, {
-            displayName: name,
+        return updateProfile(auth.currentUser, {
+            displayName: displayName,
             photoURL: photoURL
         })
     }
@@ -53,7 +53,8 @@ const AuthProvider = ({children}) => {
         createUserEmailPassword,
         loginWithEmailPasswrod,
         updateUserProfile,
-        logOut
+        logOut,
+        loading
     }
     return (
         <AuthContext.Provider value={authInfo}>

@@ -7,7 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
     const [showPass, setShowPass] = useState(false);
-    const { createUserEmailPassword, updateUserProfile } = useContext(AuthContext)
+    const { createUserEmailPassword, updateUserProfile, logOut } = useContext(AuthContext)
 
     const handleCreateUser = (e) => {
         e.preventDefault()
@@ -33,15 +33,22 @@ const Register = () => {
         createUserEmailPassword(email, password)
             .then(result => {
                 console.log(result);
-                if (result) {
-                    updateUserProfile(name, photoURL)
+                updateUserProfile(name, photoURL)
                     .then(() => {
 
-                      })
-                      .catch((error) => {
+                    })
+                    .catch((error) => {
                         console.log(error);
-                      });
+                    });
+                if (result) {
                     toast.success('Registration successful!');
+                    logOut()
+                        .then(result => {
+                            console.log(result);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
                 }
             })
             .catch(error => {
