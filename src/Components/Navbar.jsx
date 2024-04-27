@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import 'react-tooltip/dist/react-tooltip.css'
+import {  Tooltip } from 'react-tooltip'
 
 const Navbar = () => {
 
@@ -50,8 +52,9 @@ const Navbar = () => {
                     user ?
                         <div data-aos="fade-left" data-aos-duration="500" className="flex items-center justify-center">
                             <Link to="/userProfile" tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mr-3">
-                                <div className="w-10 rounded-full" title={user?.displayName}>
+                                <div data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} className="w-10 rounded-full">
                                     <img alt="User Images" src={user?.photoURL && user.photoURL} />
+                                    <Tooltip id="my-tooltip" />
                                 </div>
                             </Link>
                             <button onClick={handleLogOut} className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">Log out</button>
