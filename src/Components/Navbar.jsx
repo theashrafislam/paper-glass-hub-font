@@ -11,6 +11,7 @@ const Navbar = () => {
     const navLinks = <>
             <li className="font-semibold" data-aos="fade-down" data-aos-duration="500"><NavLink to="/">Home</NavLink></li>
             <li className="font-semibold" data-aos="fade-down" data-aos-duration="500"><NavLink to="/allArtAndCreftItems">All Art & craft Items</NavLink></li>
+            <li className="font-semibold" data-aos="fade-down" data-aos-duration="500"><NavLink to="/addCarftItem">Add Craft Item</NavLink></li>
             <li className="font-semibold" data-aos="fade-up" data-aos-duration="500"><NavLink to="/myArtAndCraftList">My Art&Craft List</NavLink></li>
             {/* <li className="font-semibold" data-aos="fade-up" data-aos-duration="500"><NavLink to="/login">Login</NavLink></li> */}
             <li className="font-semibold" data-aos="fade-down" data-aos-duration="500"><NavLink to="/register">Register</NavLink></li>
@@ -36,7 +37,7 @@ const Navbar = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-52">
-                        {}
+                        {navLinks}
                     </ul>
                 </div>
                 <Link data-aos="fade-right" data-aos-duration="500" className="btn btn-ghost text-xl" to="/">PaperGlass Hub</Link>

@@ -1,11 +1,16 @@
 // import { Outlet } from "react-router-dom";
 // import Navbar from "../Components/Navbar";
 
+import Banner from "../Components/Banner";
+import OurTeam from "../Components/OurTeam";
+import Testimonial from "../Components/Testimonial";
+
 const Home = () => {
     return (
         <div>
-            
-        <h1>hello i am home</h1>
+            <Banner></Banner>
+            <Testimonial></Testimonial>
+            <OurTeam></OurTeam>
         </div>
     );
 };

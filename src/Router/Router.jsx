@@ -6,6 +6,7 @@ import AllArtAndCreftItems from "../Pages/AllArtAndCreftItems";
 import MyArtAndCraftList from "../Pages/MyArtAndCraftList";
 import Root from "../Layout/Root";
 import ErrorPage from "../Pages/ErrorPage";
+import AddCraftItem from "../Pages/AddCraftItem";
 
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
         {
             path: '/myArtAndCraftList',
             element: <MyArtAndCraftList></MyArtAndCraftList>
+        },
+        {
+            path: '/addCarftItem',
+            element: <AddCraftItem></AddCraftItem>
         }
       ]
     },
