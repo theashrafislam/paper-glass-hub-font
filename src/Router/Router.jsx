@@ -8,6 +8,7 @@ import Root from "../Layout/Root";
 import ErrorPage from "../Pages/ErrorPage";
 import AddCraftItem from "../Pages/AddCraftItem";
 import PrivateRoute from "./PrivateRoute";
+import ViewDetailsPage from "../Pages/ViewDetailsPage";
 
 
 const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
         {
             path: '/addCarftItem',
             element: <PrivateRoute><AddCraftItem></AddCraftItem></PrivateRoute>
+        },
+        {
+            path: "/viewDetailsPage/:id",
+            element: <PrivateRoute><ViewDetailsPage></ViewDetailsPage></PrivateRoute>
         }
       ]
     },

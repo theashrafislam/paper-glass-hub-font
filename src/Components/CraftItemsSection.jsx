@@ -13,7 +13,7 @@ const CraftItemsSection = () => {
     return (
         <div className="my-10">
             <h1>Hello I am craft items section {loadedData.length}</h1>
-            <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {
                     loadedData.map(data => <CraftItemCard data={data} key={data._id}></CraftItemCard>)
                 }

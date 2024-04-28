@@ -26,7 +26,6 @@ const AddCraftItem = () => {
         const rating = form.rating.value;
         const processingTime = form.processingTime.value;
         const user = { photo, itemName, subCategory, shortDescription, price, rating, processingTime, stockStatus, customization, email, displayName }
-        // console.log(user);
 
         fetch('http://localhost:5000/craftItems', {
             method: 'POST',
