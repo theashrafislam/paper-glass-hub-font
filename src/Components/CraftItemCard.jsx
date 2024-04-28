@@ -9,10 +9,7 @@ const CraftItemCard = ({data}) => {
                 <div className="space-y-2">
                     <h2 className="text-2xl lg:text-3xl font-semibold tracking-wide">Item Name: {itemName}</h2>
                     <p className="text-gray-700 text-base mb-2"><span className='font-bold'>Sub Category: {subCategory}</span></p>
-                    <p className="dark:text-gray-800">
-                        {/* {description.length > 100 ? description.slice(0, 100) : description} */}
-                    </p>
-                    <p className="text-gray-700 text-base mb-2"><span className='font-bold'>Short Description: </span>{shortDescription}</p>
+                    <p className="text-gray-700 text-base mb-2"><span className='font-bold'>Short Description: </span>{shortDescription.length > 50 ? shortDescription.slice(0, 80) : shortDescription}</p>
                     <p className="text-gray-700 text-base mb-2"><span className='font-bold'>Price: </span>{price}</p>
                     <p className="text-gray-700 text-base mb-2"><span className='font-bold'>Rating: </span>{rating}</p>
                     <p className="text-gray-700 text-base mb-2"><span className='font-bold'>customization: </span>{customization}</p>

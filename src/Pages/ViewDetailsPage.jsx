@@ -1,7 +1,13 @@
+// import { useEffect, useState } from "react";
+// import { useParams } from "react-router-dom";
+
+import { useLoaderData } from "react-router-dom";
+
 const ViewDetailsPage = () => {
+    const data = useLoaderData()
     return (
         <div>
-            hello
+            {console.log(data)}
         </div>
     );
 };

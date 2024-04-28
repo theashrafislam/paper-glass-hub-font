@@ -43,7 +43,8 @@ const router = createBrowserRouter([
         },
         {
             path: "/viewDetailsPage/:id",
-            element: <PrivateRoute><ViewDetailsPage></ViewDetailsPage></PrivateRoute>
+            element: <PrivateRoute><ViewDetailsPage></ViewDetailsPage></PrivateRoute>,
+            loader: ({params}) => fetch(`http://localhost:5000/craftItems/${params.id}`)
         }
       ]
     },
