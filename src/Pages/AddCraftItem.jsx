@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 // import { useLocation } from "react-router-dom";
 
 const AddCraftItem = () => {
+    const {user} = useContext(AuthContext);
+    const {email, displayName} = user;
     const [stockStatus, setStockStatus] = useState('');
     const [customization, setCustomization] = useState('');
-    // const location = useLocation();
-    // {console.log(location);}
-
 
     const handleStockStatusChange = (e) => {
         setStockStatus(e.target.value);
@@ -14,7 +14,6 @@ const AddCraftItem = () => {
     const handleCustomizationChange = (e) => {
         setCustomization(e.target.value);
     };
-
 
     const handleForm = (event) => {
         event.preventDefault();
@@ -26,8 +25,7 @@ const AddCraftItem = () => {
         const price = form.price.value;
         const rating = form.rating.value;
         const processingTime = form.processingTime.value;
-        // const stockStatus = form.stockStatus.value;
-        const user = { photo, itemName, subCategory, shortDescription, price, rating, processingTime, stockStatus, customization }
+        const user = { photo, itemName, subCategory, shortDescription, price, rating, processingTime, stockStatus, customization, email, displayName }
         // console.log(user);
         
         fetch('http://localhost:5000/craftItems',{
