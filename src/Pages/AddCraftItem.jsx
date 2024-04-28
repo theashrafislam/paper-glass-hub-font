@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-// import { useLocation } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddCraftItem = () => {
-    const {user} = useContext(AuthContext);
-    const {email, displayName} = user;
+    const { user } = useContext(AuthContext);
+    const { email, displayName } = user;
     const [stockStatus, setStockStatus] = useState('');
     const [customization, setCustomization] = useState('');
 
@@ -27,8 +27,8 @@ const AddCraftItem = () => {
         const processingTime = form.processingTime.value;
         const user = { photo, itemName, subCategory, shortDescription, price, rating, processingTime, stockStatus, customization, email, displayName }
         // console.log(user);
-        
-        fetch('http://localhost:5000/craftItems',{
+
+        fetch('http://localhost:5000/craftItems', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -38,6 +38,10 @@ const AddCraftItem = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                if (data.insertedId) {
+                    toast.success('Great news! Your craft item has been successfully added.');
+                    form.reset()
+                }
             })
     }
     return (
@@ -78,7 +82,7 @@ const AddCraftItem = () => {
                 <div className="flex lg:flex-row flex-col gap-4 items-center">
                     <div className="flex flex-col w-full">
                         <label htmlFor="customization-id" className="text-lg">Customization</label>
-                        <select className="select select-info w-full p-2 border-gray-200 border-2" value={customization} onChange={handleCustomizationChange}>
+                        <select className="select select-info w-full p-2 border-gray-200 border-2" value={customization} onChange={handleCustomizationChange} required>
                             <option disabled value="">Select you choose</option>
                             <option value="Yes">Yes</option>
                             <option value="No">No</option>
@@ -90,24 +94,20 @@ const AddCraftItem = () => {
                     </div>
                 </div>
                 <div className="flex lg:flex-row flex-col gap-4 items-center">
-                    {/* <div className="flex flex-col w-full">
-                        <label htmlFor="stock-status" className="text-lg">Stock Status</label>
-                        <input type="text" name="stockStatus" id="stock-status" className="border-2 p-2 rounded-lg" placeholder="Stock Status" required />
-                    </div> */}
                     <div className="flex flex-col w-full">
                         <label htmlFor="stock-status" className="text-lg">Stock Status</label>
-                        <select className="select select-info w-full p-2 border-gray-200 border-2" value={stockStatus} onChange={handleStockStatusChange}>
+                        <select className="select select-info w-full p-2 border-gray-200 border-2" value={stockStatus} onChange={handleStockStatusChange} required>
                             <option disabled value="">Select you choose</option>
                             <option value="In stock">In stock</option>
                             <option value="Made to Order">Made to Order</option>
                         </select>
                     </div>
                 </div>
-                {/* email and displayName  */}
                 <div className="flex flex-col">
                     <button className="btn w-full font-bold text-lg bg-violet-600 text-gray-50 hover:text-black">Add</button>
                 </div>
             </form>
+            <Toaster />
         </div>
     );
 };
