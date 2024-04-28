@@ -1,8 +1,11 @@
 import { useState } from "react";
+// import { useLocation } from "react-router-dom";
 
 const AddCraftItem = () => {
     const [stockStatus, setStockStatus] = useState('');
     const [customization, setCustomization] = useState('');
+    // const location = useLocation();
+    // {console.log(location);}
 
 
     const handleStockStatusChange = (e) => {
@@ -25,7 +28,19 @@ const AddCraftItem = () => {
         const processingTime = form.processingTime.value;
         // const stockStatus = form.stockStatus.value;
         const user = { photo, itemName, subCategory, shortDescription, price, rating, processingTime, stockStatus, customization }
-        console.log(user);
+        // console.log(user);
+        
+        fetch('http://localhost:5000/craftItems',{
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
     }
     return (
         <div className="my-10 mx-4 lg:mx-0">

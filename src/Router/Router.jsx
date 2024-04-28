@@ -7,6 +7,7 @@ import MyArtAndCraftList from "../Pages/MyArtAndCraftList";
 import Root from "../Layout/Root";
 import ErrorPage from "../Pages/ErrorPage";
 import AddCraftItem from "../Pages/AddCraftItem";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
         },
         {
             path: '/addCarftItem',
-            element: <AddCraftItem></AddCraftItem>
+            element: <PrivateRoute><AddCraftItem></AddCraftItem></PrivateRoute>
         }
       ]
     },

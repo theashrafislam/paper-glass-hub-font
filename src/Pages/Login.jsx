@@ -1,13 +1,14 @@
 import { useContext, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { IoEye, IoEyeOff } from "react-icons/io5";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
     const {loginWithGoogle, loginWithGihub} = useContext(AuthContext)
     const navigate = useNavigate()
+    const location = useLocation()
     const [showPass, setShowPass] = useState(false);
     const { loginWithEmailPasswrod } = useContext(AuthContext);
     const handleLogin = (e) => {
@@ -21,7 +22,7 @@ const Login = () => {
                 if (result) {
                     toast.success('Log in Success! Welcome Back!', {duration: 3000});
                     setTimeout(() => {
-                        navigate('/')
+                        navigate(location.state ? location.state : '/')
                     }, 3000);
                 }
             })
@@ -36,7 +37,7 @@ const Login = () => {
                 if (result) {
                     toast.success('Log in Success! Welcome Back!', {duration: 3000});
                     setTimeout(() => {
-                        navigate('/')
+                        navigate(location.state ? location.state : '/')
                     }, 3000);
                 }
             })
@@ -51,7 +52,7 @@ const Login = () => {
             if (result) {
                 toast.success('Log in Success! Welcome Back!', {duration: 3000});
                 setTimeout(() => {
-                    navigate('/')
+                    navigate(location.state ? location.state : '/')
                 }, 3000);
             }
         })
