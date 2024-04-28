@@ -1,9 +1,31 @@
+import { useState } from "react";
+
 const AddCraftItem = () => {
+    const [stockStatus, setStockStatus] = useState('');
+    const [customization, setCustomization] = useState('');
+
+
+    const handleStockStatusChange = (e) => {
+        setStockStatus(e.target.value);
+    };
+    const handleCustomizationChange = (e) => {
+        setCustomization(e.target.value);
+    };
+
+
     const handleForm = (event) => {
         event.preventDefault();
         const form = event.target;
         const photo = form.photoLink.value;
-        console.log(photo);
+        const itemName = form.itemName.value;
+        const subCategory = form.subCategory.value;
+        const shortDescription = form.shortDescription.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const processingTime = form.processingTime.value;
+        // const stockStatus = form.stockStatus.value;
+        const user = { photo, itemName, subCategory, shortDescription, price, rating, processingTime, stockStatus, customization }
+        console.log(user);
     }
     return (
         <div className="my-10 mx-4 lg:mx-0">
@@ -37,33 +59,34 @@ const AddCraftItem = () => {
                     </div>
                     <div className="flex flex-col w-full">
                         <label htmlFor="rating-id" className="text-lg">Rating</label>
-                        <input type="text" name="price" id="rating-id" className="border-2 p-2 rounded-lg" placeholder="Rating" required />
+                        <input type="text" name="rating" id="rating-id" className="border-2 p-2 rounded-lg" placeholder="Rating" required />
                     </div>
                 </div>
                 <div className="flex lg:flex-row flex-col gap-4 items-center">
                     <div className="flex flex-col w-full">
                         <label htmlFor="customization-id" className="text-lg">Customization</label>
-                        <select className="select select-info w-full p-2 border-gray-200 border-2" value="Select you choose">
+                        <select className="select select-info w-full p-2 border-gray-200 border-2" value={customization} onChange={handleCustomizationChange}>
+                            <option disabled value="">Select you choose</option>
                             <option value="Yes">Yes</option>
                             <option value="No">No</option>
                         </select>
                     </div>
                     <div className="flex flex-col w-full">
                         <label htmlFor="processing-time" className="text-lg">Processing Time</label>
-                        <input type="text" name="customization" id="processing-time" className="border-2 p-2 rounded-lg" placeholder="Processing Time" required />
+                        <input type="text" name="processingTime" id="processing-time" className="border-2 p-2 rounded-lg" placeholder="Processing Time" required />
                     </div>
                 </div>
                 <div className="flex lg:flex-row flex-col gap-4 items-center">
-                    <div className="flex flex-col w-full">
+                    {/* <div className="flex flex-col w-full">
                         <label htmlFor="stock-status" className="text-lg">Stock Status</label>
                         <input type="text" name="stockStatus" id="stock-status" className="border-2 p-2 rounded-lg" placeholder="Stock Status" required />
-                    </div>
+                    </div> */}
                     <div className="flex flex-col w-full">
                         <label htmlFor="stock-status" className="text-lg">Stock Status</label>
-                        <select className="select select-info w-full p-2  border-gray-200 border-2">
-                            <option disabled selected>Select you choose</option>
-                            <option> In stock</option>
-                            <option>Made to Order</option>
+                        <select className="select select-info w-full p-2 border-gray-200 border-2" value={stockStatus} onChange={handleStockStatusChange}>
+                            <option disabled value="">Select you choose</option>
+                            <option value="In stock">In stock</option>
+                            <option value="Made to Order">Made to Order</option>
                         </select>
                     </div>
                 </div>
