@@ -9,6 +9,8 @@ import ErrorPage from "../Pages/ErrorPage";
 import AddCraftItem from "../Pages/AddCraftItem";
 import PrivateRoute from "./PrivateRoute";
 import ViewDetailsPage from "../Pages/ViewDetailsPage";
+import UpdatePage from "../Pages/UpdatePage";
+import ArtAndCartSub from "../Pages/ArtAndCartSub";
 
 
 const router = createBrowserRouter([
@@ -31,11 +33,13 @@ const router = createBrowserRouter([
         },
         {
             path: '/allArtAndCreftItems',
-            element: <AllArtAndCreftItems></AllArtAndCreftItems>
+            element: <AllArtAndCreftItems></AllArtAndCreftItems>,
+            loader: () => fetch('https://paper-glass-hub-client.vercel.app/craftItems')
         },
         {
             path: '/myArtAndCraftList',
-            element: <MyArtAndCraftList></MyArtAndCraftList>
+            element: <PrivateRoute><MyArtAndCraftList></MyArtAndCraftList></PrivateRoute>,
+            loader: () => fetch('https://paper-glass-hub-client.vercel.app/craftItems')
         },
         {
             path: '/addCarftItem',
@@ -44,7 +48,17 @@ const router = createBrowserRouter([
         {
             path: "/viewDetailsPage/:id",
             element: <PrivateRoute><ViewDetailsPage></ViewDetailsPage></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/craftItems/${params.id}`)
+            loader: ({params}) => fetch(`https://paper-glass-hub-client.vercel.app/craftItems/${params.id}`)
+        },
+        {
+            path: '/updatePage/:id',
+            element: <PrivateRoute><UpdatePage></UpdatePage></PrivateRoute>,
+            loader: ({params}) => fetch(`https://paper-glass-hub-client.vercel.app/craftItems/${params.id}`)
+        },
+        {
+            path: '/artAndCart/:subCategory',
+            element: <ArtAndCartSub></ArtAndCartSub>,
+            loader: ({params}) => fetch(`https://paper-glass-hub-client.vercel.app/craftItems`) 
         }
       ]
     },
