@@ -1,8 +1,15 @@
-# React + Vite
+**Website Name: Paper Glass Hub**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+**Live site URL:** https://paper-glass-hub.web.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Features:**
+
+*User-friendly navigation with React Router for seamless page transitions
+*Secure user authentication with PrivateRoute to protect sensitive information
+*Dynamic rendering of art and craft items based on categories and user customization preferences
+*Convenient update and delete functionalities for managing user-created listings
+*Integration of sweet alert notifications for a delightful user experience
+
+
+**Category Name: Paper Crafts & Glass Art**
