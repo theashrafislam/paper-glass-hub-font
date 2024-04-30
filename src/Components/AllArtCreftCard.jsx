@@ -20,7 +20,7 @@ const AllArtCreftCard = ({ item, index }) => {
             </td>
             <td>{rating}</td>
             <td>
-            <Link to={`/viewDetailsPage/${_id}`} className='btn w-full font-bold text-base md:text-lg rounded-xl bg-violet-600 text-gray-50 hover:text-black'>
+            <Link to={`/viewDetailsPage/${_id}`} className='btn w-full font-bold text-base text-nowrap rounded-xl bg-violet-600 text-gray-50 hover:text-black'>
                 View Details
                 </Link>
             </td>
