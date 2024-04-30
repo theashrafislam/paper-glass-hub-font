@@ -67,7 +67,7 @@ const Navbar = () => {
                 {
                     user ?
                         <div data-aos="fade-left" data-aos-duration="500" className="flex items-center justify-center">
-                            <Link to="/userProfile" tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mr-3">
+                            <Link tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mr-3">
                                 <div data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} className="w-10 rounded-full z-10">
                                     <img alt="User Images" src={user?.photoURL && user.photoURL} />
                                     <Tooltip id="my-tooltip" />
