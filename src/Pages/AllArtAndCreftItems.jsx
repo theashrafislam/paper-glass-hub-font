@@ -18,7 +18,7 @@ const AllArtAndCreftItems = () => {
                             <tr>
                                 <th>No</th>
                                 <th>Name</th>
-                                <th>Job</th>
+                                <th>Rating</th>
                                 <th>Button</th>
                             </tr>
                         </thead>
