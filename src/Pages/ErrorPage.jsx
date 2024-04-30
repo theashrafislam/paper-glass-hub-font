@@ -5,7 +5,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 const ErrorPage = () => {
     return (
         <HelmetProvider>
-            <div className="w-3/12 mx-auto">
+            <div className="w-11/12 mx-auto">
                 <Helmet>
                     <title>Error Page || Paper Glass Hub</title>
                 </Helmet>
